@@ -11,6 +11,8 @@ public class Property {
 	@GeneratedValue
 	private Long id;
 
+	private String ref;
+
 	private String title;
 
 	private String description;
@@ -29,9 +31,11 @@ public class Property {
 		super();
 	}
 
-	public Property(String title, String description, Type type, Subarea subarea, int nbBedrooms, int nbBathrooms,
-			double price) {
+	public Property(Long id, String ref, String title, String description, Type type, Subarea subarea, int nbBedrooms,
+			int nbBathrooms, double price) {
 		super();
+		this.id = id;
+		this.ref = ref;
 		this.title = title;
 		this.description = description;
 		this.type = type;
@@ -47,6 +51,14 @@ public class Property {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 
 	public String getTitle() {
