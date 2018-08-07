@@ -9,7 +9,7 @@ public class Property {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 
 	private String title;
 
@@ -17,7 +17,7 @@ public class Property {
 
 	private Type type;
 
-	private Location location;
+	private Subarea subarea;
 
 	private int nbBedrooms;
 
@@ -29,24 +29,23 @@ public class Property {
 		super();
 	}
 
-	public Property(long id, String title, String description, Type type, Location location, int nbBedrooms,
-			int nbBathrooms, double price) {
+	public Property(String title, String description, Type type, Subarea subarea, int nbBedrooms, int nbBathrooms,
+			double price) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.type = type;
-		this.location = location;
+		this.subarea = subarea;
 		this.nbBedrooms = nbBedrooms;
 		this.nbBathrooms = nbBathrooms;
 		this.price = price;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -74,12 +73,12 @@ public class Property {
 		this.type = type;
 	}
 
-	public Location getLocation() {
-		return location;
+	public Subarea getSubarea() {
+		return subarea;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setSubarea(Subarea subarea) {
+		this.subarea = subarea;
 	}
 
 	public int getNbBedrooms() {

@@ -12,16 +12,15 @@ public class Type {
 	private long id;
 
 	private String code;
-	
+
 	private String label;
 
 	public Type() {
-		
+
 	}
-	
-	public Type(long id, String code, String label) {
+
+	public Type(String code, String label) {
 		super();
-		this.id = id;
 		this.code = code;
 		this.label = label;
 	}

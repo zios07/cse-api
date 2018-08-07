@@ -11,25 +11,18 @@ public class Location {
 	@GeneratedValue
 	private long id;
 
-	private String label;
+	private String code;
 
-	private double latitude;
-
-	private double longitude;
-
-	private City city;
+	private String name;
 
 	public Location() {
 
 	}
 
-	public Location(long id, String label, double latitude, double longitude, City city) {
+	public Location(String code, String name) {
 		super();
-		this.id = id;
-		this.label = label;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.city = city;
+		this.code = code;
+		this.name = name;
 	}
 
 	public long getId() {
@@ -40,36 +33,20 @@ public class Location {
 		this.id = id;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getCode() {
+		return code;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public double getLatitude() {
-		return latitude;
+	public String getName() {
+		return name;
 	}
 
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public City getCity() {
-		return city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
