@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		// the user details service and the password encoder to be user in the
+		// the user details service and the password encoder to be used in the
 		// authenticated() method of authenticationManager of the JwtAuthentication Filter
 
 		auth.userDetailsService(userDetailsServiceBean())

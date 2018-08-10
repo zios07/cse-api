@@ -17,18 +17,18 @@ public class Subarea {
 
 	private double longitude;
 
-	private Location city;
+	private Location location;
 
 	public Subarea() {
 
 	}
 
-	public Subarea(String label, double latitude, double longitude, Location city) {
+	public Subarea(String label, double latitude, double longitude, Location location) {
 		super();
 		this.label = label;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.city = city;
+		this.location = location;
 	}
 
 	public long getId() {
@@ -63,12 +63,12 @@ public class Subarea {
 		this.longitude = longitude;
 	}
 
-	public Location getCity() {
-		return city;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setCity(Location city) {
-		this.city = city;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 }
