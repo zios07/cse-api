@@ -1,7 +1,7 @@
 package com.cse.configuration;
 
-import static com.cse.security.utils.SecurityConstants.LOGIN_URL;
-import static com.cse.security.utils.SecurityConstants.REGISTRATION_URL;
+import static com.cse.security.utils.SecurityConstants.LOGIN_ENDPOINT;
+import static com.cse.security.utils.SecurityConstants.REGISTRATION_ENDPOINT;
 
 import java.util.Arrays;
 
@@ -22,6 +22,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.cse.security.JwtAuthenticationFilter;
 import com.cse.security.JwtAuthorizationFilter;
+import com.cse.security.utils.SecurityUtils;
 import com.cse.security.utils.UserDetailsServiceImpl;
 import com.cse.service.AccountService;
 import com.cse.service.UserService;
@@ -43,9 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 				.authorizeRequests()
-					.antMatchers(HttpMethod.POST, LOGIN_URL, REGISTRATION_URL)
+					.antMatchers(HttpMethod.POST, LOGIN_ENDPOINT, REGISTRATION_ENDPOINT)
 						.permitAll()
 					.antMatchers(HttpMethod.OPTIONS)
+						.permitAll()
+					.antMatchers(HttpMethod.GET, SecurityUtils.getPublicEndpoints())
 						.permitAll()
 					.anyRequest()
 						.authenticated()
@@ -74,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
 		final JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
 		filter.setAuthenticationManager(authenticationManager());
-		filter.setFilterProcessesUrl(LOGIN_URL);
+		filter.setFilterProcessesUrl(LOGIN_ENDPOINT);
 		return filter;
 	}
 

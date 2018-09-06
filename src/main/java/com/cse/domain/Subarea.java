@@ -3,6 +3,7 @@ package com.cse.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Subarea {
@@ -17,6 +18,7 @@ public class Subarea {
 
 	private double longitude;
 
+	@OneToOne
 	private Location location;
 
 	public Subarea() {

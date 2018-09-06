@@ -3,6 +3,8 @@ package com.cse.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Property {
@@ -17,8 +19,10 @@ public class Property {
 
 	private String description;
 
+	@ManyToOne
 	private Type type;
 
+	@OneToOne
 	private Subarea subarea;
 
 	private int nbBedrooms;

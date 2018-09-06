@@ -6,12 +6,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     password: root
-    url: jdbc:mysql://localhost:3306/productService?useSSL=false
+    url: jdbc:mysql://localhost:3306/csedb?useSSL=false
     username: root
   jpa:
     show-sql: true
     hibernate:
-        ddl-auto: update
+        ddl-auto: create
     properties:
         hibernate:
             dialect: org.hibernate.dialect.MySQL5Dialect
