@@ -3,6 +3,7 @@ package com.cse.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cse.domain.Property;
+import com.cse.domain.dto.PropertySearchDto;
 import com.cse.service.api.IPropertyService;
 import com.cse.service.exception.NotFoundException;
 
@@ -37,6 +40,11 @@ public class PropertyController {
 	@PostMapping
 	public ResponseEntity<Property> create(@RequestBody Property property) {
 		return ResponseEntity.ok(service.save(property));
+	}
+
+	@PostMapping(value = "search")
+	public ResponseEntity<Page<Property>> search(@RequestBody PropertySearchDto property, @RequestParam int page, @RequestParam int size) {
+		return ResponseEntity.ok(service.search(property, page, size));
 	}
 
 	@PutMapping

@@ -1,7 +1,6 @@
 package com.cse.configuration;
 
-import static com.cse.security.utils.SecurityConstants.LOGIN_ENDPOINT;
-import static com.cse.security.utils.SecurityConstants.REGISTRATION_ENDPOINT;
+import static com.cse.security.utils.SecurityConstants.*;
 
 import java.util.Arrays;
 
@@ -47,6 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers(HttpMethod.POST, LOGIN_ENDPOINT, REGISTRATION_ENDPOINT)
 						.permitAll()
 					.antMatchers(HttpMethod.OPTIONS)
+						.permitAll()
+					.antMatchers(HttpMethod.POST, PROPERTY_SEARCH_ENDPOINT)
 						.permitAll()
 					.antMatchers(HttpMethod.GET, SecurityUtils.getPublicEndpoints())
 						.permitAll()
