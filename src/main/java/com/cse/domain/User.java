@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "USER_TABLE")
+@Table(name = "TB_USER")
 public class User {
 
 	@Id
@@ -36,10 +36,11 @@ public class User {
 	@ManyToOne
 	private Role role;
 
-	private byte[] photo;
+	public User() {
+		super();
+	}
 
-	public User(Long id, String email, String firstName, String lastName, LocalDate bDate, Account account, Role role,
-			byte[] photo) {
+	public User(Long id, String email, String firstName, String lastName, LocalDate bDate, Account account, Role role) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -48,11 +49,6 @@ public class User {
 		this.bDate = bDate;
 		this.account = account;
 		this.role = role;
-		this.photo = photo;
-	}
-
-	public User() {
-		super();
 	}
 
 	public Long getId() {
@@ -111,21 +107,6 @@ public class User {
 		this.role = role;
 	}
 
-	public byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", bDate=" + bDate + ", account=" + account + ", role=" + role + ", photo=" + Arrays.toString(photo)
-				+ "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -136,7 +117,6 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + Arrays.hashCode(photo);
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		return result;
 	}
@@ -179,8 +159,6 @@ public class User {
 			if (other.lastName != null)
 				return false;
 		} else if (!lastName.equals(other.lastName))
-			return false;
-		if (!Arrays.equals(photo, other.photo))
 			return false;
 		if (role == null) {
 			if (other.role != null)
