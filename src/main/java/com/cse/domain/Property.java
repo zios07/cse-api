@@ -1,5 +1,7 @@
 package com.cse.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +22,25 @@ public class Property {
 	private String title;
 
 	private String description;
+	
+	private Date creationDate;
+	
+	private Date updateDate;
+	
+	private Date activeDate;
+	
+	private Date inactiveDate;
+	
+	private double surface;
 
+	private Gallery gallery;
+	
+	@ManyToOne
+	private User author;
+	
+	@ManyToOne
+	private User updatedBy;
+	
 	@ManyToOne
 	private Type type;
 
@@ -37,13 +57,22 @@ public class Property {
 		super();
 	}
 
-	public Property(Long id, String ref, String title, String description, Type type, Subarea subarea, int nbBedrooms,
-			int nbBathrooms, double price) {
+	public Property(Long id, String ref, String title, String description, Date creationDate, Date updateDate,
+			Date activeDate, Date inactiveDate, double surface, Gallery gallery, User author, User updatedBy, Type type,
+			Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
 		super();
 		this.id = id;
 		this.ref = ref;
 		this.title = title;
 		this.description = description;
+		this.creationDate = creationDate;
+		this.updateDate = updateDate;
+		this.activeDate = activeDate;
+		this.inactiveDate = inactiveDate;
+		this.surface = surface;
+		this.gallery = gallery;
+		this.author = author;
+		this.updatedBy = updatedBy;
 		this.type = type;
 		this.subarea = subarea;
 		this.nbBedrooms = nbBedrooms;
@@ -81,6 +110,70 @@ public class Property {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public Date getActiveDate() {
+		return activeDate;
+	}
+
+	public void setActiveDate(Date activeDate) {
+		this.activeDate = activeDate;
+	}
+
+	public Date getInactiveDate() {
+		return inactiveDate;
+	}
+
+	public void setInactiveDate(Date inactiveDate) {
+		this.inactiveDate = inactiveDate;
+	}
+
+	public double getSurface() {
+		return surface;
+	}
+
+	public void setSurface(double surface) {
+		this.surface = surface;
+	}
+
+	public Gallery getGallery() {
+		return gallery;
+	}
+
+	public void setGallery(Gallery gallery) {
+		this.gallery = gallery;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public User getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(User updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public Type getType() {

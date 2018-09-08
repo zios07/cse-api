@@ -16,15 +16,19 @@ public class Location {
 	private String code;
 
 	private String name;
+	
+	private byte[] pictureOfArea;
 
 	public Location() {
 
 	}
 
-	public Location(String code, String name) {
+	public Location(long id, String code, String name, byte[] pictureOfArea) {
 		super();
+		this.id = id;
 		this.code = code;
 		this.name = name;
+		this.pictureOfArea = pictureOfArea;
 	}
 
 	public long getId() {
@@ -49,6 +53,14 @@ public class Location {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public byte[] getPictureOfArea() {
+		return pictureOfArea;
+	}
+
+	public void setPictureOfArea(byte[] pictureOfArea) {
+		this.pictureOfArea = pictureOfArea;
 	}
 
 }
