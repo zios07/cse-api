@@ -4,7 +4,7 @@ import static com.cse.service.utils.UtilContants.NOT_FOUND_CODE;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,6 +15,7 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -45,8 +46,8 @@ public class PropertyService implements IPropertyService {
 	}
 
 	@Override
-	public List<Property> findAll() {
-		return repo.findAll();
+	public Page<Property> findAll(Pageable pageable) {
+		return repo.findAll(pageable);
 	}
 
 	@Override
@@ -68,6 +69,11 @@ public class PropertyService implements IPropertyService {
 
 			return builder.and(predicates.toArray(new Predicate[predicates.size()]));
 		}, PageRequest.of(page, size));
+	}
+
+	@Override
+	public Page<Property> findAllDevelopments(Pageable pageable) {
+		return repo.findByActiveDateGreaterThan(new Date(), pageable);
 	}
 
 }

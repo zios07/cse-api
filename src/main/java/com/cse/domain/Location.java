@@ -23,9 +23,8 @@ public class Location {
 
 	}
 
-	public Location(long id, String code, String name, byte[] pictureOfArea) {
+	public Location(String code, String name, byte[] pictureOfArea) {
 		super();
-		this.id = id;
 		this.code = code;
 		this.name = name;
 		this.pictureOfArea = pictureOfArea;
