@@ -9,6 +9,7 @@ public class SecurityUtils {
 	public static String[] getPublicEndpoints() {
 		return new String[] {
 			PROPERTY_ENDPOINT,
+			DEVELOPMENT_ENDPOINT,
 			TYPE_ENDPOINT,
 			LOCATION_ENDPOINT,
 			SUBAREA_ENDPOINT

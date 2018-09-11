@@ -1,8 +1,7 @@
 package com.cse.service.api;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.cse.domain.Property;
 import com.cse.domain.dto.PropertySearchDto;
@@ -14,10 +13,13 @@ public interface IPropertyService {
 
 	Property findOne(Long id) throws NotFoundException;
 
-	List<Property> findAll();
+	Page<Property> findAll(Pageable pageable);
 
 	void delete(Long id) throws NotFoundException;
 
 	Page<Property> search(PropertySearchDto property, int page, int size);
 
+	Page<Property> findAllDevelopments(Pageable pageable);
+
 }
+	

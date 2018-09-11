@@ -2,6 +2,7 @@ package com.cse.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,6 +34,7 @@ public class Property {
 	
 	private double surface;
 
+	@OneToOne(cascade = CascadeType.ALL)
 	private Gallery gallery;
 	
 	@ManyToOne
@@ -57,11 +59,10 @@ public class Property {
 		super();
 	}
 
-	public Property(Long id, String ref, String title, String description, Date creationDate, Date updateDate,
+	public Property(String ref, String title, String description, Date creationDate, Date updateDate,
 			Date activeDate, Date inactiveDate, double surface, Gallery gallery, User author, User updatedBy, Type type,
 			Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
 		super();
-		this.id = id;
 		this.ref = ref;
 		this.title = title;
 		this.description = description;

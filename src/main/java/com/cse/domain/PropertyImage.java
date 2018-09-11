@@ -2,8 +2,15 @@ package com.cse.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class PropertyImage {
 
+	@Id @GeneratedValue
 	private Long id;
 	
 	private byte[] content;
@@ -16,16 +23,16 @@ public class PropertyImage {
 	
 	private Date inactiveDate;
 	
+	@ManyToOne
 	private User author;
 
 	public PropertyImage() {
 		super();
 	}
 
-	public PropertyImage(Long id, byte[] content, Date creationDate, Date updateDate, Date activeDate,
+	public PropertyImage(byte[] content, Date creationDate, Date updateDate, Date activeDate,
 			Date inactiveDate, User author) {
 		super();
-		this.id = id;
 		this.content = content;
 		this.creationDate = creationDate;
 		this.updateDate = updateDate;

@@ -1,9 +1,8 @@
 package com.cse.rest;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +27,17 @@ public class PropertyController {
 	private IPropertyService service;
 
 	@GetMapping
-	public ResponseEntity<List<Property>> findAll() {
-		return ResponseEntity.ok(service.findAll());
+	public ResponseEntity<Page<Property>> findAllProperties(
+			@RequestParam(required = false, defaultValue = "0") int page,
+			@RequestParam(required = false, defaultValue = "10") int size) {
+		return ResponseEntity.ok(service.findAll(PageRequest.of(page, size)));
+	}
+
+	@GetMapping(value = "/developments/all")
+	public ResponseEntity<Page<Property>> findAllDevelopments(
+			@RequestParam(required = false, defaultValue = "0") int page,
+			@RequestParam(required = false, defaultValue = "10") int size) {
+		return ResponseEntity.ok(service.findAllDevelopments(PageRequest.of(page, size)));
 	}
 
 	@GetMapping(value = "{id}")
@@ -43,7 +51,8 @@ public class PropertyController {
 	}
 
 	@PostMapping(value = "search")
-	public ResponseEntity<Page<Property>> search(@RequestBody PropertySearchDto property, @RequestParam int page, @RequestParam int size) {
+	public ResponseEntity<Page<Property>> search(@RequestBody PropertySearchDto property, @RequestParam int page,
+			@RequestParam int size) {
 		return ResponseEntity.ok(service.search(property, page, size));
 	}
 
