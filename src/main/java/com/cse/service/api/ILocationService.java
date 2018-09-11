@@ -1,6 +1,7 @@
 package com.cse.service.api;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.cse.domain.Location;
 import com.cse.service.exception.NotFoundException;
@@ -11,7 +12,7 @@ public interface ILocationService {
 
 	Location findOne(Long id) throws NotFoundException;
 
-	List<Location> findAll();
+	Page<Location> findAll(Pageable pageRequest);
 
 	void delete(Long id) throws NotFoundException;
 

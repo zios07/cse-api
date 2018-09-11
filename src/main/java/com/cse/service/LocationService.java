@@ -1,8 +1,8 @@
 package com.cse.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cse.domain.Location;
@@ -29,8 +29,8 @@ public class LocationService implements ILocationService {
 	}
 
 	@Override
-	public List<Location> findAll() {
-		return repo.findAll();
+	public Page<Location> findAll(Pageable pageable) {
+		return repo.findAll(pageable);
 	}
 
 	@Override
