@@ -80,10 +80,10 @@ public class PopulateDatabase {
 				images.add(img);
 			}
 
-			Gallery gallery = new Gallery(images);
+			Gallery gallery = new Gallery(images, null);
 
 
-			Property property = new Property("PROP" + i, "Property " + i, "A property number " + i, new Date(), new Date(),
+			Property property = new Property("PROP" + i, "Property " + i, "A property number " + i, null, new Date(), new Date(),
 					new Date(2015 + i - 1900, 12, 12), new Date(), 42 * i, gallery, user, user,
 					type , subarea, 12, 4, 134);
 			this.propertyRepository.save(property);

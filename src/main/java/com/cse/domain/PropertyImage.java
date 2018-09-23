@@ -2,27 +2,33 @@ package com.cse.domain;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class PropertyImage {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
-	
+
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private byte[] content;
 
 	private Date creationDate;
-	
+
 	private Date updateDate;
-	
+
 	private Date activeDate;
-	
+
 	private Date inactiveDate;
-	
+
 	@ManyToOne
 	private User author;
 
@@ -30,8 +36,8 @@ public class PropertyImage {
 		super();
 	}
 
-	public PropertyImage(byte[] content, Date creationDate, Date updateDate, Date activeDate,
-			Date inactiveDate, User author) {
+	public PropertyImage(byte[] content, Date creationDate, Date updateDate, Date activeDate, Date inactiveDate,
+			User author) {
 		super();
 		this.content = content;
 		this.creationDate = creationDate;
@@ -96,5 +102,5 @@ public class PropertyImage {
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-	
+
 }

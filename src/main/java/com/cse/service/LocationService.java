@@ -1,5 +1,7 @@
 package com.cse.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,14 +20,13 @@ public class LocationService implements ILocationService {
 
 	@Override
 	public Location save(Location location) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.save(location);
 	}
 
 	@Override
 	public Location findOne(Long id) throws NotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Location> optional = repo.findById(id);
+		return optional.isPresent() ? optional.get() : null;
 	}
 
 	@Override
@@ -35,8 +36,7 @@ public class LocationService implements ILocationService {
 
 	@Override
 	public void delete(Long id) throws NotFoundException {
-		// TODO Auto-generated method stub
-
+		repo.deleteById(id);
 	}
 
 }

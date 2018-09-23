@@ -1,13 +1,12 @@
-
-INSERT INTO gallery VALUES ('6');
-INSERT INTO gallery VALUES ('11');
-INSERT INTO gallery VALUES ('16');
-INSERT INTO gallery VALUES ('21');
-INSERT INTO gallery VALUES ('26');
-INSERT INTO gallery VALUES ('31');
-INSERT INTO gallery VALUES ('36');
-INSERT INTO gallery VALUES ('41');
-INSERT INTO gallery VALUES ('46');
+ INSERT INTO gallery(id, PROPERTY_ID) VALUES ('6', '10');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('11', '15');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('16', '25');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('21', '35');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('26', '40');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('31', '20');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('36', '30');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('41', '15');
+INSERT INTO gallery(id, PROPERTY_ID) VALUES ('46', '5');
 
 
 -- ----------------------------
@@ -102,3 +101,5 @@ INSERT INTO tb_type VALUES ('4', 'T1', 'Type1');
 -- Records of tb_user
 -- ----------------------------
 INSERT INTO tb_user VALUES ('2', null, '', 'user1', 'user1', null, null);
+
+  

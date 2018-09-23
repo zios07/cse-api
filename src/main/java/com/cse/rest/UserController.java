@@ -19,7 +19,7 @@ import com.cse.service.api.IUserService;
 import com.cse.service.exception.NotFoundException;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("api/users")
 public class UserController {
 
 	@Autowired

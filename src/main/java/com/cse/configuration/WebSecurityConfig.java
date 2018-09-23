@@ -51,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						.permitAll()
 					.antMatchers(HttpMethod.GET, SecurityUtils.getPublicEndpoints())
 						.permitAll()
+					.antMatchers("**")
+						.permitAll()
 					.anyRequest()
 						.authenticated()
 			.and()
@@ -61,8 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		// the user details service and the password encoder to be used in the
-		// authenticated() method of authenticationManager of the JwtAuthentication Filter
+		// the user details service and the  icationManager of the JwtAuthentication Filter
 
 		auth.userDetailsService(userDetailsServiceBean())
 		 .passwordEncoder(passwordEncoder());
