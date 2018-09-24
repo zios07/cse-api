@@ -4,6 +4,7 @@ import static com.cse.service.utils.UtilContants.NOT_FOUND_CODE;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,7 @@ public class PropertyService implements IPropertyService {
 
 	@Autowired
 	private PropertyRepository repo;
-	
+
 	@Autowired
 	private GallertyRepository galleryRepository;
 
@@ -55,8 +56,7 @@ public class PropertyService implements IPropertyService {
 			Gallery gallery = galleryRepository.findByPropertyId(String.valueOf(property.getId()));
 			property.setGallery(gallery);
 			return property;
-		}
-		else
+		} else
 			throw new NotFoundException(NOT_FOUND_CODE, "Property not found with id : " + id);
 	}
 
@@ -96,8 +96,8 @@ public class PropertyService implements IPropertyService {
 		Gallery gallery = new Gallery();
 		gallery.setPropertyId(uuid);
 		List<PropertyImage> images = new ArrayList<>();
-		if(photos != null && photos.length > 0) {
-			for(MultipartFile photo : photos) {
+		if (photos != null && photos.length > 0) {
+			for (MultipartFile photo : photos) {
 				images.add(new PropertyImage(photo.getBytes(), null, null, null, null, null));
 			}
 		}
@@ -108,5 +108,18 @@ public class PropertyService implements IPropertyService {
 	private void updateProductIdForPhoto(String uuid, String propertyId) {
 		galleryRepository.updatePropertyId(uuid, propertyId);
 	}
-	
+
+	@Override
+	public List<Property> loadMainProperties() {
+		List<Property> properties = repo.findByMainTrue();
+		properties.forEach(property -> {
+			Gallery gallery = galleryRepository.findByPropertyId(String.valueOf(property.getId()));
+			if (gallery != null && gallery.getImages() != null && !gallery.getImages().isEmpty()) {
+				gallery.setImages(Arrays.asList(gallery.getImages().get(0)));
+				property.setGallery(gallery);
+			}
+		});
+		return properties;
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.cse.rest;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,13 +38,18 @@ public class PropertyController {
 		return ResponseEntity.ok(service.findAll(PageRequest.of(page, size)));
 	}
 
-	@GetMapping(value = "/developments/all")
+	@GetMapping(value = "developments/all")
 	public ResponseEntity<Page<Property>> findAllDevelopments(
 			@RequestParam(required = false, defaultValue = "0") int page,
 			@RequestParam(required = false, defaultValue = "10") int size) {
 		return ResponseEntity.ok(service.findAllDevelopments(PageRequest.of(page, size)));
 	}
-
+	
+	@GetMapping(value = "main")
+	public ResponseEntity<List<Property>> loadMainProperties() {
+		return ResponseEntity.ok(service.loadMainProperties());
+	}
+	
 	@GetMapping(value = "{id}")
 	public ResponseEntity<Property> findById(@PathVariable Long id) throws NotFoundException {
 		return ResponseEntity.ok(service.findOne(id));

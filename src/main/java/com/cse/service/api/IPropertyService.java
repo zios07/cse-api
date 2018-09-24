@@ -1,6 +1,7 @@
 package com.cse.service.api;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,8 @@ public interface IPropertyService {
 	Page<Property> findAllDevelopments(Pageable pageable);
 
 	void savePropertyPhotos(MultipartFile[] photos, String uuid) throws IOException;
+
+	List<Property> loadMainProperties();
 
 }
 	

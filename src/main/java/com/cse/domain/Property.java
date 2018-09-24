@@ -35,6 +35,8 @@ public class Property {
 	private Date inactiveDate;
 	
 	private double surface;
+	
+	private boolean main;
 
 	@Transient
 	private Gallery gallery;
@@ -61,9 +63,10 @@ public class Property {
 		super();
 	}
 
+
 	public Property(String ref, String uuid, String title, String description, Date creationDate, Date updateDate,
-			Date activeDate, Date inactiveDate, double surface, Gallery gallery, User author, User updatedBy, Type type,
-			Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
+			Date activeDate, Date inactiveDate, double surface, boolean main, Gallery gallery, User author,
+			User updatedBy, Type type, Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
 		super();
 		this.ref = ref;
 		this.uuid = uuid;
@@ -74,6 +77,7 @@ public class Property {
 		this.activeDate = activeDate;
 		this.inactiveDate = inactiveDate;
 		this.surface = surface;
+		this.main = main;
 		this.gallery = gallery;
 		this.author = author;
 		this.updatedBy = updatedBy;
@@ -83,6 +87,7 @@ public class Property {
 		this.nbBathrooms = nbBathrooms;
 		this.price = price;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -226,6 +231,16 @@ public class Property {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+
+	public boolean isMain() {
+		return main;
+	}
+
+
+	public void setMain(boolean main) {
+		this.main = main;
 	}
 
 }

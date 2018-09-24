@@ -6,23 +6,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cse.domain.Gallery;
 import com.cse.domain.Location;
-import com.cse.domain.Property;
 import com.cse.domain.PropertyImage;
 import com.cse.domain.Subarea;
 import com.cse.domain.Type;
 import com.cse.domain.User;
 import com.cse.repository.LocationRepository;
-import com.cse.repository.PropertyRepository;
 import com.cse.repository.SubareaRepository;
 import com.cse.repository.TypeRepository;
 import com.cse.repository.UserRepository;
@@ -32,8 +27,8 @@ import com.cse.repository.UserRepository;
 @SpringBootTest
 public class PopulateDatabase {
 
-	@Autowired
-	private PropertyRepository propertyRepository;
+//	@Autowired
+//	private PropertyRepository propertyRepository;
 
 	@Autowired
 	private LocationRepository locationRepository;
@@ -55,7 +50,7 @@ public class PopulateDatabase {
 	
 	private Location location;
 	
-	@Before
+//	@Before
 	public void before() {
 		location = new Location("L1", "AGADIR", new byte[] {});
 		user = new User("", "user1", "user1", null, null, null);
@@ -80,13 +75,13 @@ public class PopulateDatabase {
 				images.add(img);
 			}
 
-			Gallery gallery = new Gallery(images, null);
+//			Gallery gallery = new Gallery(images, null);
 
-
-			Property property = new Property("PROP" + i, "Property " + i, "A property number " + i, null, new Date(), new Date(),
-					new Date(2015 + i - 1900, 12, 12), new Date(), 42 * i, gallery, user, user,
-					type , subarea, 12, 4, 134);
-			this.propertyRepository.save(property);
+//
+//			Property property = new Property("PROP" + i, "Property " + i, "A property number " + i, null, new Date(), new Date(),
+//					new Date(2015 + i - 1900, 12, 12), new Date(), 42 * i, true, gallery, user, user,
+//					type , subarea, 12, 4, 134);
+//			this.propertyRepository.save(property);
 		}
 		assertEquals(1, 1);
 
