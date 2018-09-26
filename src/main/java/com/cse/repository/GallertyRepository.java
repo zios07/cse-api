@@ -14,9 +14,9 @@ import com.cse.domain.Gallery;
 public interface GallertyRepository extends JpaRepository<Gallery, Long> {
 
 	@Modifying
-	@Query("update Gallery g set g.propertyId = ?2 where g.propertyId = ?1")
-	int updatePropertyId(String uuid, String newProductId);
+	@Query("update Gallery g set g.entityId = ?2 where g.entityId = ?1")
+	int updateEntityId(String uuid, String newProductId);
 
-	Gallery findByPropertyId(String id);
+	Gallery findByEntityId(String id);
 
 }

@@ -2,18 +2,14 @@ package com.cse.cseservice;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.cse.domain.Gallery;
 import com.cse.domain.Location;
-import com.cse.domain.PropertyImage;
 import com.cse.domain.Subarea;
 import com.cse.domain.Type;
 import com.cse.domain.User;
@@ -52,7 +48,7 @@ public class PopulateDatabase {
 	
 //	@Before
 	public void before() {
-		location = new Location("L1", "AGADIR", new byte[] {});
+		location = new Location("L1", "AGADIR", new Gallery(), false, null);
 		user = new User("", "user1", "user1", null, null, null);
 		subarea = new Subarea("Subarea1", 124, 3422, location);
 		type = new Type("T1", "Type1");
@@ -68,12 +64,12 @@ public class PopulateDatabase {
 
 		for (int i = 1 ; i < 10 ; i++) {
 
-			List<PropertyImage> images = new ArrayList<>();
-			for (int j = 0; j < 3; j++) {
-				PropertyImage img = new PropertyImage(new byte[] {}, new Date(), new Date(), new Date(), new Date(),
-						user);
-				images.add(img);
-			}
+//			List<Image> images = new ArrayList<>();
+//			for (int j = 0; j < 3; j++) {
+//				Image img = new Image(new byte[] {}, new Date(), new Date(), new Date(), new Date(),
+//						user);
+//				images.add(img);
+//			}
 
 //			Gallery gallery = new Gallery(images, null);
 

@@ -56,7 +56,7 @@ public class PropertyController {
 	}
 	
 	@PostMapping(value = "photo-upload")
-	public ResponseEntity<?> uploadProductPhotos(@RequestParam("photos") MultipartFile[] photos,
+	public ResponseEntity<?> uploadPropertyPhotos(@RequestParam("photos") MultipartFile[] photos,
 			@RequestParam("uuid") String uuid) throws IOException {
 		service.savePropertyPhotos(photos, uuid);
 		return new ResponseEntity<>(HttpStatus.CREATED);

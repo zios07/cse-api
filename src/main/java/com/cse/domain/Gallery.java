@@ -19,19 +19,19 @@ public class Gallery {
 	private Long id;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<PropertyImage> images;
+	private List<Image> images;
 
-	@Column(nullable = false, name = "PROPERTY_ID")
-	private String propertyId;
+	@Column(nullable = false, name = "ENTITY_ID")
+	private String entityId;
 
 	public Gallery() {
 
 	}
 
-	public Gallery(List<PropertyImage> images, String propertyId) {
+	public Gallery(List<Image> images, String entityId) {
 		super();
 		this.images = images;
-		this.propertyId = propertyId;
+		this.entityId = entityId;
 	}
 
 	public Long getId() {
@@ -42,20 +42,20 @@ public class Gallery {
 		this.id = id;
 	}
 
-	public List<PropertyImage> getImages() {
+	public List<Image> getImages() {
 		return images;
 	}
 
-	public void setImages(List<PropertyImage> images) {
+	public void setImages(List<Image> images) {
 		this.images = images;
 	}
 
-	public String getPropertyId() {
-		return propertyId;
+	public String getEntityId() {
+		return entityId;
 	}
 
-	public void setPropertyId(String propertyId) {
-		this.propertyId = propertyId;
+	public void setEntityId(String entityId) {
+		this.entityId = entityId;
 	}
 
 }

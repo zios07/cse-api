@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TB_LOCATION")
@@ -16,18 +17,25 @@ public class Location {
 	private String code;
 
 	private String name;
-	
-	private byte[] pictureOfArea;
+
+	@Transient
+	private Gallery gallery;
+
+	private boolean main;
+
+	private String uuid;
 
 	public Location() {
 
 	}
 
-	public Location(String code, String name, byte[] pictureOfArea) {
+	public Location(String code, String name, Gallery gallery, boolean main, String uuid) {
 		super();
 		this.code = code;
 		this.name = name;
-		this.pictureOfArea = pictureOfArea;
+		this.gallery = gallery;
+		this.main = main;
+		this.uuid = uuid;
 	}
 
 	public long getId() {
@@ -54,12 +62,28 @@ public class Location {
 		this.name = name;
 	}
 
-	public byte[] getPictureOfArea() {
-		return pictureOfArea;
+	public Gallery getGallery() {
+		return gallery;
 	}
 
-	public void setPictureOfArea(byte[] pictureOfArea) {
-		this.pictureOfArea = pictureOfArea;
+	public void setGallery(Gallery gallery) {
+		this.gallery = gallery;
+	}
+
+	public boolean isMain() {
+		return main;
+	}
+
+	public void setMain(boolean main) {
+		this.main = main;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 }
