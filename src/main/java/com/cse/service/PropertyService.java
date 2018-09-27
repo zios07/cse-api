@@ -125,4 +125,17 @@ public class PropertyService implements IPropertyService {
 		return properties;
 	}
 
+	@Override
+	public List<Property> findMainDevelopments() {
+		List<Property> developments = repo.findByMainTrueAndActiveDateGreaterThan(new Date());
+		developments.forEach(development -> {
+			Gallery gallery = galleryRepository.findByEntityId(String.valueOf(development.getId()));
+			if (gallery != null && gallery.getImages() != null && !gallery.getImages().isEmpty()) {
+				gallery.setImages(Arrays.asList(gallery.getImages().get(0)));
+				development.setGallery(gallery);
+			}
+		});
+		return developments;
+	}
+
 }

@@ -29,5 +29,7 @@ public interface IPropertyService {
 
 	List<Property> loadMainProperties();
 
+	List<Property> findMainDevelopments();
+
 }
 	

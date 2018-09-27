@@ -18,4 +18,6 @@ public interface PropertyRepository extends JpaRepository<Property, Long>, JpaSp
 
 	List<Property> findByMainTrue();
 
+	List<Property> findByMainTrueAndActiveDateGreaterThan(Date date);
+
 }

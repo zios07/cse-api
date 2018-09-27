@@ -45,6 +45,11 @@ public class PropertyController {
 		return ResponseEntity.ok(service.findAllDevelopments(PageRequest.of(page, size)));
 	}
 	
+	@GetMapping(value = "developments/main")
+	public ResponseEntity<List<Property>> findMainDevelopments() {
+		return ResponseEntity.ok(service.findMainDevelopments());
+	}
+	
 	@GetMapping(value = "main")
 	public ResponseEntity<List<Property>> loadMainProperties() {
 		return ResponseEntity.ok(service.loadMainProperties());
