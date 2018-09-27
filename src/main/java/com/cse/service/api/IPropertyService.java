@@ -31,5 +31,7 @@ public interface IPropertyService {
 
 	List<Property> findMainDevelopments();
 
+	Page<Property> findAllWithPhotos(Pageable pageable);
+
 }
 	

@@ -37,6 +37,13 @@ public class PropertyController {
 			@RequestParam(required = false, defaultValue = "10") int size) {
 		return ResponseEntity.ok(service.findAll(PageRequest.of(page, size)));
 	}
+	
+	@GetMapping(value = "with-photos")
+	public ResponseEntity<Page<Property>> findAllPropertiesWithPhotos(
+			@RequestParam(required = false, defaultValue = "0") int page,
+			@RequestParam(required = false, defaultValue = "10") int size) {
+		return ResponseEntity.ok(service.findAllWithPhotos(PageRequest.of(page, size)));
+	}
 
 	@GetMapping(value = "developments/all")
 	public ResponseEntity<Page<Property>> findAllDevelopments(

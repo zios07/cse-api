@@ -68,6 +68,20 @@ public class PropertyService implements IPropertyService {
 	}
 
 	@Override
+	public Page<Property> findAllWithPhotos(Pageable pageable) {
+		Page<Property> result = repo.findAll(pageable);
+		List<Property> properties = result != null ? result.getContent() : new ArrayList<>();
+		properties.forEach(property -> {
+			Gallery gallery = galleryRepository.findByEntityId(String.valueOf(property.getId()));
+			if (gallery != null && gallery.getImages() != null && !gallery.getImages().isEmpty()) {
+				gallery.setImages(Arrays.asList(gallery.getImages().get(0)));
+				property.setGallery(gallery);
+			}
+		});
+		return result;
+	}
+	
+	@Override
 	public void delete(Long id) throws NotFoundException {
 		if (repo.existsById(id))
 			throw new NotFoundException(NOT_FOUND_CODE, "Property not found with id : " + id);
