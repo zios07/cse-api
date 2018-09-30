@@ -36,7 +36,13 @@ public class LocationController {
 			@RequestParam(required = false, defaultValue = "10") int size) {
 		return ResponseEntity.ok(service.findAll(PageRequest.of(page, size)));
 	}
-
+	
+	@GetMapping(value = "all")
+	public ResponseEntity<List<Location>> findAll() {
+		return ResponseEntity.ok(service.findAll());
+	}
+	
+	
 	@GetMapping(value = "{id}")
 	public ResponseEntity<Location> findById(@PathVariable Long id) throws NotFoundException {
 		return ResponseEntity.ok(service.findOne(id));

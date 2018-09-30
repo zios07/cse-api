@@ -24,4 +24,6 @@ public interface ILocationService {
 
 	List<Location> loadMainLocations();
 
+	List<Location> findAll();
+
 }

@@ -1,8 +1,11 @@
 package com.cse.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.cse.domain.Subarea;
@@ -18,25 +21,29 @@ public class SubareaService implements ISubareaService {
 
 	@Override
 	public Subarea save(Subarea subarea) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.save(subarea);
 	}
 
 	@Override
 	public Subarea findOne(Long id) throws NotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Subarea> optional = repo.findById(id);
+		return optional.isPresent() ? optional.get() : null;
+	}
+
+
+	@Override
+	public void delete(Long id) throws NotFoundException {
+		repo.deleteById(id);
+	}
+
+	@Override
+	public Page<Subarea> findAll(PageRequest pageRequest) {
+		return repo.findAll(pageRequest);
 	}
 
 	@Override
 	public List<Subarea> findAll() {
 		return repo.findAll();
-	}
-
-	@Override
-	public void delete(Long id) throws NotFoundException {
-		// TODO Auto-generated method stub
-
 	}
 
 }

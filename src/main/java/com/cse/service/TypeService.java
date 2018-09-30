@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.cse.domain.Type;
@@ -29,13 +31,18 @@ public class TypeService implements ITypeService {
 	}
 
 	@Override
-	public List<Type> findAll() {
-		return repo.findAll();
+	public void delete(Long id) throws NotFoundException {
+		repo.deleteById(id);
 	}
 
 	@Override
-	public void delete(Long id) throws NotFoundException {
-		repo.deleteById(id);
+	public Page<Type> findAll(PageRequest pageRequest) {
+		return repo.findAll(pageRequest);
+	}
+
+	@Override
+	public List<Type> findAll() {
+		return repo.findAll();
 	}
 
 }

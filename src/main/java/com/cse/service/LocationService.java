@@ -78,4 +78,9 @@ public class LocationService implements ILocationService {
 		return locations;
 	}
 
+	@Override
+	public List<Location> findAll() {
+		return repo.findAll();
+	}
+
 }
