@@ -1,39 +1,50 @@
-package com.cse.domain;
+	package com.cse.domain;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class PropertyImage {
+@Table(name = "TB_IMAGE")
+public class Image {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
-	
+
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
 	private byte[] content;
+	
+	private String entityName;
 
 	private Date creationDate;
-	
+
 	private Date updateDate;
-	
+
 	private Date activeDate;
-	
+
 	private Date inactiveDate;
-	
+
 	@ManyToOne
 	private User author;
 
-	public PropertyImage() {
+	public Image() {
 		super();
 	}
 
-	public PropertyImage(byte[] content, Date creationDate, Date updateDate, Date activeDate,
+	public Image(byte[] content, String entityName, Date creationDate, Date updateDate, Date activeDate,
 			Date inactiveDate, User author) {
 		super();
 		this.content = content;
+		this.entityName = entityName;
 		this.creationDate = creationDate;
 		this.updateDate = updateDate;
 		this.activeDate = activeDate;
@@ -55,6 +66,14 @@ public class PropertyImage {
 
 	public void setContent(byte[] content) {
 		this.content = content;
+	}
+
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
 	}
 
 	public Date getCreationDate() {
@@ -96,5 +115,5 @@ public class PropertyImage {
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-	
+
 }

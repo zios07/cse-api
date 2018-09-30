@@ -22,9 +22,8 @@ public class Account {
 		
 	}
 	
-	public Account(Long id, String username, String password) {
+	public Account(String username, String password) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
 	}

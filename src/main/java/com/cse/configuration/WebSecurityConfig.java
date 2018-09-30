@@ -1,6 +1,6 @@
 package com.cse.configuration;
 
-import static com.cse.security.utils.SecurityConstants.*;
+import static com.cse.security.utils.SecurityConstants.LOGIN_ENDPOINT;
 
 import java.util.Arrays;
 
@@ -21,7 +21,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.cse.security.JwtAuthenticationFilter;
 import com.cse.security.JwtAuthorizationFilter;
-import com.cse.security.utils.SecurityUtils;
 import com.cse.security.utils.UserDetailsServiceImpl;
 import com.cse.service.AccountService;
 import com.cse.service.UserService;
@@ -43,16 +42,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 				.authorizeRequests()
-					.antMatchers(HttpMethod.POST, LOGIN_ENDPOINT, REGISTRATION_ENDPOINT)
-						.permitAll()
-					.antMatchers(HttpMethod.OPTIONS)
-						.permitAll()
-					.antMatchers(HttpMethod.POST, PROPERTY_SEARCH_ENDPOINT)
-						.permitAll()
-					.antMatchers(HttpMethod.GET, SecurityUtils.getPublicEndpoints())
-						.permitAll()
-					.anyRequest()
+					.antMatchers(HttpMethod.POST, "**")
 						.authenticated()
+					.antMatchers(HttpMethod.DELETE, "**")
+						.authenticated()
+					.anyRequest()
+						.permitAll()
 			.and()
 				.addFilter(jwtAuthenticationFilter())
 				.addFilter(new JwtAuthorizationFilter(authenticationManager()));
@@ -60,10 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-		// the user details service and the password encoder to be used in the
-		// authenticated() method of authenticationManager of the JwtAuthentication Filter
-
+		// the user details service and the authenticationManager of the JwtAuthentication Filter
 		auth.userDetailsService(userDetailsServiceBean())
 		 .passwordEncoder(passwordEncoder());
 

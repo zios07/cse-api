@@ -1,6 +1,7 @@
 package com.cse.repository;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,5 +15,9 @@ import com.cse.domain.Property;
 public interface PropertyRepository extends JpaRepository<Property, Long>, JpaSpecificationExecutor<Property> {
 
 	Page<Property> findByActiveDateGreaterThan(Date date, Pageable pageable);
+
+	List<Property> findByMainTrue();
+
+	List<Property> findByMainTrueAndActiveDateGreaterThan(Date date);
 
 }

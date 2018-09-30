@@ -3,6 +3,10 @@ server:
   
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 17MB
+      max-request-size: 17MB
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     password: root

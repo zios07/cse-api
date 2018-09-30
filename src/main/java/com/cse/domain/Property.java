@@ -2,13 +2,13 @@ package com.cse.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TB_PROPERTY")
@@ -19,6 +19,8 @@ public class Property {
 	private Long id;
 
 	private String ref;
+	
+	private String uuid;
 
 	private String title;
 
@@ -33,8 +35,10 @@ public class Property {
 	private Date inactiveDate;
 	
 	private double surface;
+	
+	private boolean main;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@Transient
 	private Gallery gallery;
 	
 	@ManyToOne
@@ -59,11 +63,13 @@ public class Property {
 		super();
 	}
 
-	public Property(String ref, String title, String description, Date creationDate, Date updateDate,
-			Date activeDate, Date inactiveDate, double surface, Gallery gallery, User author, User updatedBy, Type type,
-			Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
+
+	public Property(String ref, String uuid, String title, String description, Date creationDate, Date updateDate,
+			Date activeDate, Date inactiveDate, double surface, boolean main, Gallery gallery, User author,
+			User updatedBy, Type type, Subarea subarea, int nbBedrooms, int nbBathrooms, double price) {
 		super();
 		this.ref = ref;
+		this.uuid = uuid;
 		this.title = title;
 		this.description = description;
 		this.creationDate = creationDate;
@@ -71,6 +77,7 @@ public class Property {
 		this.activeDate = activeDate;
 		this.inactiveDate = inactiveDate;
 		this.surface = surface;
+		this.main = main;
 		this.gallery = gallery;
 		this.author = author;
 		this.updatedBy = updatedBy;
@@ -80,6 +87,7 @@ public class Property {
 		this.nbBathrooms = nbBathrooms;
 		this.price = price;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -95,6 +103,14 @@ public class Property {
 
 	public void setRef(String ref) {
 		this.ref = ref;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	public String getTitle() {
@@ -215,6 +231,16 @@ public class Property {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+
+	public boolean isMain() {
+		return main;
+	}
+
+
+	public void setMain(boolean main) {
+		this.main = main;
 	}
 
 }
